@@ -1,0 +1,11 @@
+<h5 class="fw-normal mb-3">Listado de todos los libros disponibles:</h5>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+  <!-- Tarjetas de libros -->
+  <ng-container *ngFor="let libro of libros">
+    <ng-container *ngIf="libro.puedeMostrarse()">
+      <app-book-info [libro]="libro"></app-book-info>
+    </ng-container>
+  </ng-container>
+
+</div>
