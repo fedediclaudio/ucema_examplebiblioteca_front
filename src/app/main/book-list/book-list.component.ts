@@ -17,7 +17,7 @@ export class BookListComponent {
 
   filtro: string = '';
 
-  newCardForm = new FormGroup ({
+  newLibroForm = new FormGroup ({
     titulo: new FormControl(''),
     autor: new FormControl(''),
     editorial: new FormControl(''),
@@ -32,15 +32,15 @@ export class BookListComponent {
 
   onSubmit() {
     let libro: Libro = new Libro(
-      this.newCardForm.value.titulo!, 
-      this.newCardForm.value.autor!,
-      this.newCardForm.value.editorial!,
-      this.newCardForm.value.isbn!,
-      Number(this.newCardForm.value.anioPublicacion)!, 
-      this.newCardForm.value.estado!
+      this.newLibroForm.value.titulo!, 
+      this.newLibroForm.value.autor!,
+      this.newLibroForm.value.editorial!,
+      this.newLibroForm.value.isbn!,
+      Number(this.newLibroForm.value.anioPublicacion)!, 
+      this.newLibroForm.value.estado!
     );
     console.log(libro);
     this.libros?.push(libro); // Agrega el libro al array de libros
-    this.newCardForm.reset(); // Resetea el formulario
+    this.newLibroForm.reset(); // Resetea el formulario
   }
 }
