@@ -1,11 +1,85 @@
-<h5 class="fw-normal mb-3">Listado de todos los libros disponibles:</h5>
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+<div class="mb-3">
 
-  <!-- Tarjetas de libros -->
-  <ng-container *ngFor="let libro of libros">
-    <ng-container *ngIf="libro.puedeMostrarse()">
-      <app-book-info [libro]="libro"></app-book-info>
+  <!-- Button trigger modal -->
+  <div class=" mb-3 d-flex justify-content-between">
+    <div>
+      <h5 class="fw-normal mb-3">Listado de todos los libros disponibles:</h5>
+    </div>
+    <div>
+      <button type="button" class="btn btn-info text-white border-primary" data-bs-toggle="modal"
+        data-bs-target="#newLibroModal">
+        Agregar nuevo libro
+      </button>
+    </div>
+
+
+    <div class="modal fade" id="newLibroModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Libro</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="newCardForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="tituloInput" class="form-label">Titulo</label>
+                <input type="text" class="form-control" id="tituloInput" placeholder="Cien años de soledad" required
+                  formControlName="titulo">
+              </div>
+              <div class="mb-3">
+                <label for="autorInput" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autorInput" placeholder="Gabriel Garcia Marquez" required
+                  formControlName="autor">
+              </div>
+              <div class="mb-3">
+                <label for="editorialInput" class="form-label">Editorial</label>
+                <select class="form-select" aria-label="Default select example" id="editorialInput" required
+                  formControlName="editorial">
+                  <option value="Editorial1">Una editorial</option>
+                  <option value="Editorial2">Otra editorial</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="isbnInput" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbnInput" placeholder="0000123456789" required
+                  formControlName="isbn">
+              </div>
+              <div class="mb-3">
+                <label for="anioInput" class="form-label">Año de publicación</label>
+                <input type="number" class="form-control" id="anioInput" placeholder="1970" required
+                  formControlName="anioPublicacion">
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row m-3">
+    <input type="text" class="form-control" placeholder="Buscar libro..." [(ngModel)]="filtro"
+      (ngModelChange)="changeFiltro()">
+  </div>
+
+
+
+
+
+
+
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <!-- Tarjetas de libros -->
+    <ng-container *ngFor="let libro of libros">
+      <ng-container *ngIf="libro.puedeMostrarse() && libro.getTitulo().toLowerCase().startsWith(filtro.toLowerCase())">
+        <app-book-info [libro]="libro"></app-book-info>
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-</div>
+  </div>
