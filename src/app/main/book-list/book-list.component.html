@@ -21,11 +21,23 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form [formGroup]="newCardForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="newLibroForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">
                 <label for="tituloInput" class="form-label">Titulo</label>
                 <input type="text" class="form-control" id="tituloInput" placeholder="Cien años de soledad" required
                   formControlName="titulo">
+                  <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
+
+                    <div *ngIf="titulo.errors?.['required']">
+                      Nombre es requerido.
+                    </div>
+                    <div *ngIf="titulo.errors?.['maxlength']">
+                      El nombre no puede exceder los 150 caracteres.
+                    </div>
+                    <div *ngIf="titulo.errors?.['minlength']">
+                      El nombre debe  exceder los 3 caracteres.
+                    </div>
+                  </div>
               </div>
               <div class="mb-3">
                 <label for="autorInput" class="form-label">Autor</label>
@@ -53,7 +65,7 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Save changes</button>
+                <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal" [disabled]="!newLibroForm.valid">Save changes</button>
               </div>
             </form>
           </div>
@@ -65,7 +77,7 @@
 
   <div class="row m-3">
     <input type="text" class="form-control" placeholder="Buscar libro..." [(ngModel)]="filtro"
-      (ngModelChange)="changeFiltro()">
+      (ngModelChange)="changeFiltro()" >
   </div>
 
 

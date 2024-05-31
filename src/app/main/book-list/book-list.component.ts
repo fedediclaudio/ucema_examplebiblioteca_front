@@ -17,12 +17,12 @@ export class BookListComponent {
 
   filtro: string = '';
 
-  newCardForm = new FormGroup ({
-    titulo: new FormControl(''),
-    autor: new FormControl(''),
-    editorial: new FormControl(''),
-    isbn: new FormControl(''),
-    anioPublicacion: new FormControl(''),
+  newLibroForm = new FormGroup ({
+    titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
+    autor: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    editorial: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    isbn: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{13}$')]), // [0-9]{13} -> 13 dígitos [0-9]
+    anioPublicacion: new FormControl('', [Validators.required, Validators.min(1500), Validators.max(2024)]),
     estado: new FormControl('Disponible')
   })
 
@@ -32,15 +32,17 @@ export class BookListComponent {
 
   onSubmit() {
     let libro: Libro = new Libro(
-      this.newCardForm.value.titulo!, 
-      this.newCardForm.value.autor!,
-      this.newCardForm.value.editorial!,
-      this.newCardForm.value.isbn!,
-      Number(this.newCardForm.value.anioPublicacion)!, 
-      this.newCardForm.value.estado!
+      this.newLibroForm.value.titulo!, 
+      this.newLibroForm.value.autor!,
+      this.newLibroForm.value.editorial!,
+      this.newLibroForm.value.isbn!,
+      Number(this.newLibroForm.value.anioPublicacion)!, 
+      this.newLibroForm.value.estado!
     );
     console.log(libro);
     this.libros?.push(libro); // Agrega el libro al array de libros
-    this.newCardForm.reset(); // Resetea el formulario
+    this.newLibroForm.reset(); // Resetea el formulario
   }
+
+  get titulo() { return this.newLibroForm.controls["titulo"] }
 }
