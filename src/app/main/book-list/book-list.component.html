@@ -28,6 +28,10 @@
                   formControlName="titulo">
                   <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="alert alert-danger">
 
+                    <!-- titulo.invalid indica si el control de formulario es inválido, es decir, cuando el valor del control no cumple con las reglas de validación establecidas -->
+                    <!-- titulo.dirty indica si el control de formulario ha sido modificado por el usuario -->
+                    <!-- titulo.touched indica si el control de formulario ha sido tocado por el usuario -->ç
+
                     <div *ngIf="titulo.errors?.['required']">
                       Nombre es requerido.
                     </div>
