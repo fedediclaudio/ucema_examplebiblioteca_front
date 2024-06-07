@@ -6,12 +6,20 @@ import { MainComponent } from './main/main.component';
 import { LoansComponent } from './loans/loans.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SectionAComponent } from './profile/section-a/section-a.component';
+import { SectionBComponent } from './profile/section-b/section-b.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
   { path: 'loans', component: LoansComponent},
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, children: [
+      { path: "section-a", component: SectionAComponent},
+      { path: "section-b", component: SectionBComponent},
+    ]
+  },
   { path: 'contact', component: ContactComponent },
+  { path: 'book-details/:isbn', component: BookDetailsComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

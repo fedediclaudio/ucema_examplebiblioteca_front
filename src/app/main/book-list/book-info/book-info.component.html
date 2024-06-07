@@ -10,6 +10,7 @@
         <li>ISBN: {{libro?.getIsbn()}}</li>
         <li>Año: {{libro?.getAnioPublicacion()}}</li>
       </ul>
+      <button class="btn btn-outline-info mx-auto" routerLink="book-details/{{libro?.getIsbn()}}">Más Info</button>
       <button class="btn btn-outline-info mx-auto" (click)="onClickAgregar()" [disabled]="disabledButton">Agregar</button>
     </div>
   </div>

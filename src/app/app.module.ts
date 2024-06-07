@@ -14,6 +14,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoansComponent } from './loans/loans.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SectionAComponent } from './profile/section-a/section-a.component';
+import { SectionBComponent } from './profile/section-b/section-b.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoansComponent,
     ContactComponent,
     NotFoundComponent,
+    SectionAComponent,
+    SectionBComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
