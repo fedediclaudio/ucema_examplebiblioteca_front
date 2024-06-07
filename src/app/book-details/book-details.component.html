@@ -1,7 +1,7 @@
 <div class="p-5 mb-4 bg-body-tertiary rounded-3">
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">BOOK ISBN = {{isbn}}</h1>
-        <p class="col-md-8 fs-4">Aqui deberia mostrarse la información del libro con isbn igual a {{isbn}}</p>
+        <p class="col-md-8 fs-4">Aqui deberia mostrarse la información del libro {{libro ? libro.getTitulo() : ""}}</p>
         <button class="btn btn-outline-secondary" type="button" (click)="back()">Volver atras</button>
     </div>
 </div>

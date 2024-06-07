@@ -17,6 +17,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SectionAComponent } from './profile/section-a/section-a.component';
 import { SectionBComponent } from './profile/section-b/section-b.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { LibroService } from 'src/services/libro.service';
+import { UsuarioService } from 'src/services/usuario.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
