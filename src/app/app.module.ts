@@ -9,6 +9,11 @@ import { WelcomeCardComponent } from './main/welcome-card/welcome-card.component
 import { BookListComponent } from './main/book-list/book-list.component';
 import { BookInfoComponent } from './main/book-list/book-info/book-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { ProfileComponent } from './profile/profile.component';
+import { LoansComponent } from './loans/loans.component';
+import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +24,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WelcomeCardComponent,
     BookListComponent,
     BookInfoComponent,
+    ProfileComponent,
+    LoansComponent,
+    ContactComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
