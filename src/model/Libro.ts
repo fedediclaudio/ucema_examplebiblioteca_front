@@ -1,9 +1,10 @@
 export class Libro {
-    private titulo: string;
+    private id?: number;
+    public titulo: string;
     private autor: string;
     private editorial: string;
     private isbn: string;
-    private anioPublicacion: number;
+    private anio: number;
     private estado: string;
 
     constructor(titulo: string, autor: string, editorial: string, isbn:string, anioPublicacion: number, estado: string) {
@@ -11,13 +12,21 @@ export class Libro {
         this.autor = autor;
         this.editorial = editorial;
         this.isbn = isbn;
-        this.anioPublicacion = anioPublicacion;
+        this.anio = anioPublicacion;
         this.estado = estado;
     }
 
     // Métodos getter y setter para acceder a los atributos privados
 
-    getTitulo(): string {
+    getId(): number | undefined {
+        return this.id;
+    }
+
+    setId(id: number): void {
+        this.id = id;
+    }
+
+    public getTitulo(): string {
         return this.titulo;
     }
 
@@ -41,12 +50,12 @@ export class Libro {
         this.editorial = genero;
     }
 
-    getAnioPublicacion(): number {
-        return this.anioPublicacion;
+    getAnio(): number {
+        return this.anio;
     }
 
-    setAnioPublicacion(anioPublicacion: number): void {
-        this.anioPublicacion = anioPublicacion;
+    setAnio(anioPublicacion: number): void {
+        this.anio = anioPublicacion;
     }
 
     getEstado(): string {

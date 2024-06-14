@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SectionAComponent } from './profile/section-a/section-a.component';
 import { SectionBComponent } from './profile/section-b/section-b.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'contact', component: ContactComponent },
   { path: 'book-details/:isbn', component: BookDetailsComponent},
+  { path: 'login', component: LoginComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

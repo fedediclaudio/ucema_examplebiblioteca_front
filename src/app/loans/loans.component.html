@@ -4,3 +4,17 @@
         <p class="fs-4 mt-5">Aqui están los prestamos del usuario logueado</p>
     </div>
 </div>
+
+<div class="container m-3 row">
+    <ng-container *ngFor="let p of prestamos">
+        <div class="card col-6 m-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Prestamo numero {{p.id}}</h5>
+              <ng-container *ngFor="let l of p.libros">
+                <h6 class="card-subtitle mb-2 text-body-secondary">Libro: {{l.titulo}}</h6>
+                </ng-container>
+            </div>
+          </div>
+    </ng-container>
+
+</div>

@@ -1,18 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Libro } from 'src/model/Libro';
+import { LibroService } from 'src/services/libro.service';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit{
 
-  @Input() libros: Array<Libro> = [];
+  @Input() libros!: Libro[]
 
-  constructor() {
-    this.libros = [];
+  constructor(private libroService:LibroService) {
   }
 
   filtro: string = '';
@@ -25,6 +25,10 @@ export class BookListComponent {
     anioPublicacion: new FormControl('', [Validators.required, Validators.min(1500), Validators.max(2024)]),
     estado: new FormControl('Disponible')
   })
+
+  ngOnInit(): void {
+      //console.log(this.libros)
+  }
 
   changeFiltro() {
     console.log(this.filtro);
@@ -40,7 +44,14 @@ export class BookListComponent {
       this.newLibroForm.value.estado!
     );
     console.log(libro);
-    this.libros?.push(libro); // Agrega el libro al array de libros
+    
+    // Llamo al backend para guardar el endpoint
+    this.libroService.addLibro(libro).subscribe((libro: Libro) => {
+      console.log(libro);
+      this.libros.push(libro);
+    })
+
+
     this.newLibroForm.reset(); // Resetea el formulario
   }
 

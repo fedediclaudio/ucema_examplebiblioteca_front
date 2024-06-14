@@ -19,6 +19,8 @@ import { SectionBComponent } from './profile/section-b/section-b.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { LibroService } from 'src/services/libro.service';
 import { UsuarioService } from 'src/services/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +38,14 @@ import { UsuarioService } from 'src/services/usuario.service';
     SectionAComponent,
     SectionBComponent,
     BookDetailsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

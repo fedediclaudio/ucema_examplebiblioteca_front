@@ -1,36 +1,96 @@
+import { Prestamo } from "./Prestamo";
 
-export class Usuario {
-    private nombre: string;
-    private apellido: string;
-    private numeroPrestamos: number;
-
-    constructor(nombre: string, apellido: string, numeroPrestamos: number) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.numeroPrestamos = numeroPrestamos;
+export abstract class Usuario {
+    private id: number;
+    private username: string;
+    private password: string;
+    private nombreCompleto: string;
+    private dni: string;
+    private email: string;
+    private fechaNacimiento: Date;
+    private prestamos: Prestamo[];
+    
+    constructor(id: number, username: string, password: string, nombreCompleto: string, dni: string, email: string, fechaNacimiento: Date, prestamos: Prestamo[]) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.nombreCompleto = nombreCompleto;
+        this.dni = dni;
+        this.email = email;
+        this.fechaNacimiento = fechaNacimiento;
+        this.prestamos = prestamos;
     }
 
-    getNombre(): string {
-        return this.nombre;
+    getId(): number {
+        return this.id;
     }
 
-    setNombre(nombre: string): void {
-        this.nombre = nombre;
+    setId(id: number): void {
+        this.id = id;
     }
 
-    getApellido(): string {
-        return this.apellido;
+    getUsername(): string {
+        return this.username;
     }
 
-    setApellido(apellido: string): void {
-        this.apellido = apellido;
+    setUsername(username: string): void {
+        this.username = username;
     }
 
-    getNumeroPrestamos(): number {
-        return this.numeroPrestamos;
+    getPassword(): string {
+        return this.password;
     }
 
-    setNumeroPrestamos(numeroPrestamos: number): void {
-        this.numeroPrestamos = numeroPrestamos;
+    setPassword(password: string): void {
+        this.password = password;
     }
+
+    getNombreCompleto(): string {
+        return this.nombreCompleto;
+    }
+
+    setNombreCompleto(nombreCompleto: string): void {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    getDni(): string {
+        return this.dni;
+    }
+
+    setDni(dni: string): void {
+        this.dni = dni;
+    }
+
+    getEmail(): string {
+        return this.email;
+    }
+
+    setEmail(email: string): void {
+        this.email = email;
+    }
+
+    getFechaNacimiento(): Date {
+        return this.fechaNacimiento;
+    }
+
+    setFechaNacimiento(fechaNacimiento: Date): void {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    getPrestamos(): Prestamo[] {
+        return this.prestamos;
+    }
+
+    setPrestamos(prestamos: Prestamo[]): void {
+        this.prestamos = prestamos;
+    }
+
+    agregarPrestamo(prestamo: Prestamo): void {
+        this.prestamos.push(prestamo);
+    }
+
+    eliminarPrestamo(prestamo: Prestamo): void {
+        this.prestamos = this.prestamos.filter(p => p.getId() !== prestamo.getId());
+    }
+
 }

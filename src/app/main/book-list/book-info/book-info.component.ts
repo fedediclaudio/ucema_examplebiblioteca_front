@@ -9,13 +9,14 @@ import { Libro } from 'src/model/Libro';
 export class BookInfoComponent {
 
 
-  @Input() libro?: Libro
+  @Input() libro!: any
 
   disabledButton: boolean = false
 
 
   onClickAgregar() {
     alert('Agregado al carrito')
+    console.log(this.libro)
   }
 
 }

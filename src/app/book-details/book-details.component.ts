@@ -22,7 +22,7 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isbn = this.route.snapshot.paramMap.get('isbn')!
-    this.libro = this.libroService.getLibroByISBN(this.isbn)!
+    this.libroService.getLibroByISBN(this.isbn).subscribe((l) => this.libro = l)
   }
 
   back() {

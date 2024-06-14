@@ -9,11 +9,9 @@ export class UsuarioService {
   usuarios? : Array<Usuario>
 
   constructor() {
-    const usuario1: Usuario = new Usuario("Jhon", "Doe", 2);
-    this.usuarios = [usuario1];
    }
 
   getUsuarioByName(name: string): Usuario | undefined {
-    return this.usuarios?.find(usuario => usuario.getNombre() === name)
+    return undefined
   }
 }

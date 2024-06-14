@@ -12,16 +12,17 @@ import { UsuarioService } from 'src/services/usuario.service';
 export class MainComponent implements OnInit {
 
   usuario: Usuario | undefined
-  libros: Array<Libro>
+  libros: Libro[] = []
 
   constructor(private usuarioService: UsuarioService, private libroService:LibroService) { 
-    this.usuario = undefined
-    this.libros = []
+
   }
 
   ngOnInit(): void {
-    this.libros = this.libroService.getLibros()
-    this.usuario = this.usuarioService.getUsuarioByName("Jhon")!
+    this.libroService.getLibros().subscribe( (libros:Libro[]) => {
+      this.libros = libros
+      //console.log(libros)
+    } )
   }
 
 }

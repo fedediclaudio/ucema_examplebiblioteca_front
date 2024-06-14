@@ -1,0 +1,20 @@
+<div class="row mb-3">
+    <div class="mx-auto col-10 col-md-8 col-lg-6">
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
+      <h1 class="h3 mb-3 fw-normal">Login</h1>
+  
+      <div class="form-floating m-2">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="username">
+        <label for="floatingInput">Nombre de usuario</label>
+      </div>
+      <div class="form-floating m-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+        <label for="floatingPassword">Contraseña</label>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      </div>
+      
+    </form>
+</div>
+</div>
