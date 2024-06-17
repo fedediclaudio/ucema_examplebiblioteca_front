@@ -88,10 +88,10 @@
 
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     <!-- Tarjetas de libros -->
-    <ng-container *ngFor="let libro of libros">
-      <!-- <ng-container *ngIf="libro.getTitulo().toLowerCase().startsWith(filtro.toLowerCase())"> -->
+    <div *ngFor="let libro of libros">
+      <ng-container *ngIf="libro.getTitulo().toLowerCase().startsWith(filtro.toLowerCase())">
         <app-book-info [libro]="libro"></app-book-info>
-      <!-- </ng-container> -->
-    </ng-container>
+      </ng-container>
+    </div>
 
   </div>

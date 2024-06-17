@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.libroService.getLibros().subscribe( (libros:Libro[]) => {
       this.libros = libros
-      //console.log(libros)
+      console.log(libros)
     } )
   }
 
