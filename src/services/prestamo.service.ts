@@ -13,8 +13,6 @@ export class PrestamoService {
   constructor(private http: HttpClient) { }
 
   getPrestamos() : Observable<Prestamo[]> {
-    const base64 = localStorage.getItem('user');
-    const headers = { 'Authorization': 'Basic ' + base64}
-    return this.http.get<Prestamo[]>(this._url + 'prestamo/misprestamos', {headers})
+    return this.http.get<Prestamo[]>(this._url + 'prestamo/misprestamos')
   }
 }

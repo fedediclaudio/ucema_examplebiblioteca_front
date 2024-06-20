@@ -10,11 +10,12 @@ import { SectionAComponent } from './profile/section-a/section-a.component';
 import { SectionBComponent } from './profile/section-b/section-b.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
-  { path: 'loans', component: LoansComponent},
-  { path: 'profile', component: ProfileComponent, children: [
+  { path: 'loans', component: LoansComponent, canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
       { path: "section-a", component: SectionAComponent},
       { path: "section-b", component: SectionBComponent},
     ]

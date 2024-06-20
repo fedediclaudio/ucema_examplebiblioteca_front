@@ -89,7 +89,7 @@
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     <!-- Tarjetas de libros -->
     <div *ngFor="let libro of libros">
-      <ng-container *ngIf="libro.getTitulo().toLowerCase().startsWith(filtro.toLowerCase())">
+      <ng-container *ngIf="libro.titulo.toLowerCase().startsWith(filtro.toLowerCase())">
         <app-book-info [libro]="libro"></app-book-info>
       </ng-container>
     </div>

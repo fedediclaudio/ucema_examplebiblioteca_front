@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,9 +10,9 @@ import { LoginService } from 'src/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
 
-  usuario:any
+  ok: boolean = true
 
   formLogin: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -24,13 +24,18 @@ export class LoginComponent {
   login(): void {
     const val = this.formLogin.value
     this.loginService.login(val.username, val.password).subscribe(
-      (usuario) => {
-        this.router.navigate(['/'])
+      (resultado) => {
+        if(resultado) {
+          this.router.navigate(['/'])
+        }else {
+          this.ok = false
+        }
       }
     )
-    
-    
+  
   }
+
+
 
   
 

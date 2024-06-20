@@ -8,7 +8,12 @@
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="profile">Mis Datos</a>
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="loans">Mis Prestamos</a>
             <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="contact">Contacto</a>
-            <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="login">Login</a>
+            <ng-container *ngIf="!isLogged">
+                <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="login">Iniciar sesión</a>
+            </ng-container>
+            <ng-container *ngIf="isLogged">
+                <a class="me-3 py-2 link-body-emphasis text-decoration-none" (click)="cerrarSesion()">Cerrar sesión</a>
+            </ng-container>
         </nav>
     </div>
 </header>

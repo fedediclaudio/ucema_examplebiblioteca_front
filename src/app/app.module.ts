@@ -19,8 +19,9 @@ import { SectionBComponent } from './profile/section-b/section-b.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { LibroService } from 'src/services/libro.service';
 import { UsuarioService } from 'src/services/usuario.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from 'src/intereceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
